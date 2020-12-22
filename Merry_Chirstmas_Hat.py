@@ -51,7 +51,7 @@ def add_hat(img, hat_img):
             # 求两点中心
             eyes_center = ((point1.x+point2.x)//2, (point1.y+point2.y)//2)
 
-            #  根据人脸大小调整帽子大小
+            # 根据人脸大小调整帽子大小
             factor = 1.5    # 比例因子
             resized_hat_h = int(
                 round(rgb_hat.shape[0]*w/rgb_hat.shape[1]*factor))
@@ -108,7 +108,7 @@ def add_hat(img, hat_img):
         return -1, img
 
 
-def method_one():
+def method_one(hat_img):
     """
     方式1: 打开摄像头读取头像图
     """
@@ -151,7 +151,7 @@ def method_two(hat_img, filename):
 
 def method_three(hat_img):
     """
-    方式3: 从文件夹中读取多福头像图（批量处理）
+    方式3: 从文件夹中读取多张头像图（批量处理）
     """
     import glob as gb
 
@@ -164,7 +164,7 @@ def method_three(hat_img):
         success, output = add_hat(img, hat_img)
         if not success:
             print("戴失败了！")
-            return
+            continue
 
         # 展示效果
         cv2.imshow("output", output)
